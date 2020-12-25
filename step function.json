@@ -1,0 +1,38 @@
+{
+"Comment": "Step function to run imba process", 
+"StartAt": "remove_feature_files",
+"States": {
+"remove_feature_files": {
+"Type": "Task",
+"Resource": "arn:aws:lambda:++++your lambda ARN++++:remove_feature_files:$LATEST", 
+ "ResultPath": "$.remove_feature_files",
+"Next": "exe_query_order_products_prior", "TimeoutSeconds": 60
+}, "exe_query_order_products_prior": {
+"Type": "Task",
+"Resource": "arn:aws:lambda:++++your lambda ARN++++:exe_query_order_products_prior:$LATEST",
+"ResultPath": "$.exe_query_order_products_prior", "Next": "exe_query_user_features_1", "TimeoutSeconds": 60
+}, "exe_query_user_features_1": {
+"Type": "Task",
+"Resource": "arn:aws:lambda:++++your lambda ARN++++:exe_query_user_features_1:$LATEST",
+"ResultPath": "$.exe_query_user_features_1", "Next": "exe_query_user_features_2", "TimeoutSeconds": 60
+}, "exe_query_user_features_2": {
+"Type": "Task",
+"Resource": "arn:aws:lambda:++++your lambda ARN++++:exe_query_user_features_2:$LATEST",
+"ResultPath": "$.exe_query_user_features_2", "Next": "exe_query_up_features", "TimeoutSeconds": 60
+}, "exe_query_up_features": {
+"Type": "Task",
+"Resource": "arn:aws:lambda:++++your lambda ARN++++:exe_query_up_features:$LATEST",
+"ResultPath": "$.exe_query_up_features", "Next": "exe_query_prd_features", "TimeoutSeconds": 60
+}, "exe_query_prd_features": {
+"Type": "Task",
+"Resource": "arn:aws:lambda:++++your lambda ARN++++:exe_query_prd_features:$LATEST",
+"ResultPath": "$.exe_query_prd_features", 
+ "Next": "imba-trigger-glueJob", "TimeoutSeconds": 60 },
+"imba-trigger-glueJob":{
+"Type": "Task",
+"Resource": "arn:aws:lambda:++++your lambda ARN++++:imba-trigger-glueJob:$LATEST",
+"ResultPath": "$.output", 
+    "TimeoutSeconds": 900, "End": true 
+  }
+}
+}

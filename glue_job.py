@@ -14,10 +14,10 @@ def main():
     
     
     # creating dataframes from existing athena catelog
-    up_features = glueContext.create_dynamic_frame.from_catalog(database="prod", table_name="up_features")
-    prd_features = glueContext.create_dynamic_frame.from_catalog(database="prod", table_name="prd_features")
-    user_features_1 = glueContext.create_dynamic_frame.from_catalog(database="prod", table_name="user_features_1")
-    user_features_2 = glueContext.create_dynamic_frame.from_catalog(database="prod", table_name="user_features_2")
+    up_features = glueContext.create_dynamic_frame.from_catalog(database="prob", table_name="up_features")
+    prd_features = glueContext.create_dynamic_frame.from_catalog(database="prob", table_name="prd_features")
+    user_features_1 = glueContext.create_dynamic_frame.from_catalog(database="prob", table_name="user_features_1")
+    user_features_2 = glueContext.create_dynamic_frame.from_catalog(database="prob", table_name="user_features_2")
     
     # join user features together
     users = Join.apply(user_features_1.rename_field('user_id','user_id1'), user_features_2, 'user_id1', 'user_id').drop_fields(['user_id1'])

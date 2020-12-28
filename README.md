@@ -3,7 +3,7 @@
 Background
 
 1. Data comes from Kaggle
-2. To provide a delightful shopping experience by using customer orders over time to predict which previously</br> 3. purchased products will be in a user’s next order
+2. To provide a delightful shopping experience by using customer orders over time to predict which previously</br>3. purchased products will be in a user’s next order
 
 Objectives
 

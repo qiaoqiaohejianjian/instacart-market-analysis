@@ -12,3 +12,5 @@ Objectives
 (step function.json , trigger glue job.py , glue_job.py, lambda function for precess data.py)
 2. Build model to do the prediction 
 </br>(data modelling.R)
+
+Find detail report in project_summary.pdf
